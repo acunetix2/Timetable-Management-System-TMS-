@@ -72,7 +72,7 @@ const Sidebar = ({ role, userName, onLogout }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        'h-screen bg-sidebar text-sidebar-foreground flex flex-col transition-all duration-300 sticky top-0',
+        'h-screen bg-sidebar text-sidebar-foreground flex flex-col transition-all duration-300 sticky top-0 hidden lg:flex',
         collapsed ? 'w-16' : 'w-64'
       )}
     >
@@ -93,7 +93,7 @@ const Sidebar = ({ role, userName, onLogout }: SidebarProps) => {
           variant="ghost"
           size="icon"
           onClick={() => setCollapsed(!collapsed)}
-          className="text-sidebar-foreground hover:bg-sidebar-accent"
+          className="text-sidebar-foreground hover:bg-sidebar-accent hidden lg:flex"
         >
           {collapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </Button>

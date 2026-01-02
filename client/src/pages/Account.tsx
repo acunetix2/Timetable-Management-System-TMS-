@@ -705,48 +705,48 @@ export default function Account() {
 
   return (
     <DashboardLayout role={user.role} userName={user.name} onLogout={() => navigate('/')}>
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="w-full max-w-4xl mx-auto space-y-6 md:space-y-8">
         {/* Success Message */}
         {successMessage && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3 animate-in fade-in">
-            <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4 flex items-center gap-3 animate-in fade-in text-sm sm:text-base">
+            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
             <p className="text-green-800">{successMessage}</p>
           </div>
         )}
 
         {/* Header */}
-        <div>
-          <h1 className="text-4xl font-bold">Account Settings</h1>
-          <p className="text-muted-foreground mt-2">Manage your account information and security</p>
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Account Settings</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground">Manage your account information and security</p>
         </div>
 
         {/* Profile Section */}
-        <Card className="p-6 border-2">
-          <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+        <Card className="p-4 sm:p-6 border-2">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
             <div
-              className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-bold text-white flex-shrink-0"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center text-2xl sm:text-4xl font-bold text-white flex-shrink-0 mx-auto sm:mx-0"
               style={{ backgroundColor: roleColors[user.role].bg }}
             >
               {user.name.charAt(0).toUpperCase()}
             </div>
 
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold">{user.name}</h2>
-              <p className="text-muted-foreground mt-1">{user.email}</p>
+            <div className="flex-1 text-center sm:text-left">
+              <h2 className="text-xl sm:text-2xl font-bold">{user.name}</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">{user.email}</p>
 
-              <div className="flex items-center gap-2 mt-4">
-                <Badge className="capitalize" style={{ backgroundColor: roleColors[user.role].bg }}>
+              <div className="flex flex-wrap items-center gap-2 mt-4 justify-center sm:justify-start">
+                <Badge className="capitalize text-xs sm:text-sm" style={{ backgroundColor: roleColors[user.role].bg }}>
                   {user.role}
                 </Badge>
                 {user.id && (
-                  <Badge variant="outline">Account ID: {user.id.slice(0, 8)}...</Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">Account ID: {user.id.slice(0, 8)}...</Badge>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6">
                 <div className="bg-gray-50 rounded-lg p-3">
                   <Label className="text-xs text-gray-600 font-medium">Email Address</Label>
-                  <p className="text-sm font-medium mt-1">{user.email}</p>
+                  <p className="text-xs sm:text-sm font-medium mt-1 break-all">{user.email}</p>
                 </div>
 
                 {user.role === 'lecturer' && user.lecturer_id && (
@@ -788,61 +788,61 @@ export default function Account() {
         </Card>
 
         {/* Security Section */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold flex items-center gap-2">
-            <Shield className="w-5 h-5" />
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
             Security
           </h3>
 
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between pb-4 border-b">
-                <div>
-                  <h4 className="font-semibold">Password</h4>
-                  <p className="text-sm text-muted-foreground">Change your account password</p>
+          <Card className="p-4 sm:p-6">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 pb-3 sm:pb-4 border-b">
+                <div className="min-w-0">
+                  <h4 className="text-sm sm:text-base font-semibold">Password</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Change your account password</p>
                 </div>
-                <Button onClick={() => setShowPasswordDialog(true)} variant="outline">
-                  <Lock className="w-4 h-4 mr-2" />
+                <Button onClick={() => setShowPasswordDialog(true)} variant="outline" className="w-full sm:w-auto">
+                  <Lock className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   Change Password
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="font-semibold">Session</h4>
-                  <p className="text-sm text-muted-foreground">Manage your active sessions</p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                <div className="min-w-0">
+                  <h4 className="text-sm sm:text-base font-semibold">Session</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Manage your active sessions</p>
                 </div>
-                <Button variant="outline">View Sessions</Button>
+                <Button variant="outline" className="w-full sm:w-auto">View Sessions</Button>
               </div>
             </div>
           </Card>
         </div>
 
         {/* Edit Profile Section */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold flex items-center gap-2">
-            <User className="w-5 h-5" />
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <User className="w-4 h-4 sm:w-5 sm:h-5" />
             Profile Information
           </h3>
 
-          <Card className="p-6">
+          <Card className="p-4 sm:p-6">
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <Label className="text-sm font-medium">Full Name</Label>
-                  <p className="text-sm mt-2 text-muted-foreground">{user?.name || 'Not set'}</p>
+                  <Label className="text-xs sm:text-sm font-medium">Full Name</Label>
+                  <p className="text-xs sm:text-sm mt-2 text-muted-foreground break-all">{user?.name || 'Not set'}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Email Address</Label>
-                  <p className="text-sm mt-2 text-muted-foreground">{user?.email || 'Not set'}</p>
+                  <Label className="text-xs sm:text-sm font-medium">Email Address</Label>
+                  <p className="text-xs sm:text-sm mt-2 text-muted-foreground break-all">{user?.email || 'Not set'}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Phone Number</Label>
-                  <p className="text-sm mt-2 text-muted-foreground">{user?.phone || 'Not set'}</p>
+                  <Label className="text-xs sm:text-sm font-medium">Phone Number</Label>
+                  <p className="text-xs sm:text-sm mt-2 text-muted-foreground">{user?.phone || 'Not set'}</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Location</Label>
-                  <p className="text-sm mt-2 text-muted-foreground">
+                  <Label className="text-xs sm:text-sm font-medium">Location</Label>
+                  <p className="text-xs sm:text-sm mt-2 text-muted-foreground">
                     {user?.city && user?.country ? `${user.city}, ${user.country}` : 'Not set'}
                   </p>
                 </div>
@@ -861,43 +861,43 @@ export default function Account() {
         </div>
 
         {/* Preferences Section */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold flex items-center gap-2">
-            <Bell className="w-5 h-5" />
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
             Preferences & Notifications
           </h3>
 
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b">
-                <div>
-                  <h4 className="font-semibold text-sm">Email Notifications</h4>
+          <Card className="p-4 sm:p-6">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold">Email Notifications</h4>
                   <p className="text-xs text-muted-foreground mt-1">Receive email updates about your account</p>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                   {notifications.emailNotifications ? '✓ On' : 'Off'}
                 </Button>
               </div>
-              <div className="flex items-center justify-between pb-3 border-b">
-                <div>
-                  <h4 className="font-semibold text-sm">Login Alerts</h4>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold">Login Alerts</h4>
                   <p className="text-xs text-muted-foreground mt-1">Get notified of new login attempts</p>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                   {notifications.loginAlerts ? '✓ On' : 'Off'}
                 </Button>
               </div>
-              <div className="flex items-center justify-between pb-3 border-b">
-                <div>
-                  <h4 className="font-semibold text-sm">Activity Updates</h4>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold">Activity Updates</h4>
                   <p className="text-xs text-muted-foreground mt-1">Updates about your activities</p>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                   {notifications.activityUpdates ? '✓ On' : 'Off'}
                 </Button>
               </div>
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="min-w-0">
                   <h4 className="font-semibold text-sm">News & Updates</h4>
                   <p className="text-xs text-muted-foreground mt-1">Latest news and product updates</p>
                 </div>
@@ -919,25 +919,25 @@ export default function Account() {
             Privacy & Data
           </h3>
 
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between pb-4 border-b">
-                <div>
-                  <h4 className="font-semibold">Download Your Data</h4>
-                  <p className="text-sm text-muted-foreground mt-1">Get a copy of all your account data</p>
+          <Card className="p-4 sm:p-6">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 sm:pb-4 border-b">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold">Download Your Data</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Get a copy of all your account data</p>
                 </div>
-                <Button onClick={handleDownloadData} variant="outline">
-                  <Download className="w-4 h-4 mr-2" />
+                <Button onClick={handleDownloadData} variant="outline" className="w-full sm:w-auto">
+                  <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   Download
                 </Button>
               </div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="font-semibold">Active Sessions</h4>
-                  <p className="text-sm text-muted-foreground mt-1">Manage your active sessions and devices</p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold">Active Sessions</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Manage your active sessions and devices</p>
                 </div>
-                <Button onClick={() => setShowLogoutOtherDevices(true)} variant="outline">
-                  <Smartphone className="w-4 h-4 mr-2" />
+                <Button onClick={() => setShowLogoutOtherDevices(true)} variant="outline" className="w-full sm:w-auto">
+                  <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   View Sessions
                 </Button>
               </div>
@@ -946,26 +946,26 @@ export default function Account() {
         </div>
 
         {/* Account Actions */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold flex items-center gap-2">
-            <AlertCircle className="w-5 h-5" />
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             Account Actions
           </h3>
 
-          <Card className="p-6 border-red-200 bg-red-50">
-            <div className="flex items-center justify-between">
-              <div>
-                <h4 className="font-semibold text-red-900">Delete Account</h4>
-                <p className="text-sm text-red-700 mt-1">
+          <Card className="p-4 sm:p-6 border-red-200 bg-red-50">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+              <div className="min-w-0">
+                <h4 className="text-sm sm:text-base font-semibold text-red-900">Delete Account</h4>
+                <p className="text-xs sm:text-sm text-red-700 mt-1">
                   Permanently delete your account and all associated data. This action cannot be undone.
                 </p>
               </div>
               <Button
                 onClick={() => setShowDeleteDialog(true)}
                 variant="destructive"
-                className="flex-shrink-0"
+                className="w-full sm:w-auto flex-shrink-0"
               >
-                <Trash2 className="w-4 h-4 mr-2" />
+                <Trash2 className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 Delete Account
               </Button>
             </div>
@@ -975,7 +975,7 @@ export default function Account() {
 
       {/* Change Password Dialog */}
       <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
-        <DialogContent className="sm:max-w-[500px]">
+        <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Change Password</DialogTitle>
             <DialogDescription>

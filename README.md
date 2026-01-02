@@ -375,6 +375,8 @@ For issues, questions, or suggestions, please create an issue in the repository 
 
 ---
 
+**Developer:** Iddy Chesire
+
 **Last Updated:** January 2, 2026
 
 **Project Status:** Active Development
